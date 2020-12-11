@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ee4c77</color>
+    <color name="colorPrimaryDark">#b6004c</color>
+    <color name="colorAccent">#57bbbc</color>
+    <color name="eggShell">#ebe9d7</color>
+    <color name="warmGray">#8d8c8c</color>
+    <color name="nightBlue">#0d0430</color>
+    <color name="charcoalGray">#383743</color>
+    <color name="greenyBlue">#57bbbc</color>
+    <color name="blackAlpha8a">#8A000000</color>
+    <color name="whiteAlpha8a">#8AFFFFFF</color>
+    <color name="red">#ff0f44</color>
+    <color name="greyish">#acabab</color>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="colorControlNormal">@color/whiteAlpha8a</item>
+        <item name="android:textColorHint">@color/whiteAlpha8a</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+        <item name="colorControlHighlight">@android:color/white</item>
+        <item name="titleTextColor">@color/whiteAlpha8a</item>
+        <item name="subtitleTextColor">@color/whiteAlpha8a</item>
+        <item name="android:textColorSecondary">@color/whiteAlpha8a</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+    </style>
+</resources>

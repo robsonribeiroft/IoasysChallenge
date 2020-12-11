@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="1.7">
+      <module name="IoasysChallenge.app" target="1.8" />
+      <module name="IoasysChallenge.base_feature" target="1.8" />
+      <module name="IoasysChallenge.base_presentation" target="1.8" />
+      <module name="IoasysChallenge.data_local" target="1.8" />
+      <module name="IoasysChallenge.data_remote" target="1.8" />
+      <module name="IoasysChallenge.di" target="1.8" />
+      <module name="IoasysChallenge.feature_enterprises" target="1.8" />
+      <module name="IoasysChallenge.feature_login" target="1.8" />
+      <module name="IoasysChallenge.intent" target="1.8" />
+      <module name="IoasysChallenge.presentation_enterprises" target="1.8" />
+      <module name="IoasysChallenge.presentation_login" target="1.8" />
+      <module name="IoasysChallenge.presentation_splashscreen" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,30 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+apply from: "$rootProject.projectDir/android-commom.gradle"
+
+dependencies {
+
+    api project(':intent')
+    api project(':domain')
+    api project(':data')
+    api project(':data_remote')
+    api project(':data_local')
+
+    api project(':presentation_login')
+    api project(':presentation_enterprises')
+    api project(':presentation_splashscreen')
+
+    diDependencies.each {
+        add(it.configuration, it.dependency)
+    }
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

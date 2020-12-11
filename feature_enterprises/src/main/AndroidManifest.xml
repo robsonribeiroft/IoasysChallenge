@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rrdev.feature_enterprises">
+
+    <application>
+        <activity
+            android:name=".EnterprisesListActivity"
+            android:launchMode="singleTop">
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".EnterpriseDetailActivity"/>
+    </application>
+
+</manifest>

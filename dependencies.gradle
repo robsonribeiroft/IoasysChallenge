@@ -1,0 +1,57 @@
+ext{
+    commomDependencies = [
+            [configuration: "implementation", dependency: "$kotlin"],
+            [configuration: "api", dependency: "$kotlinCoroutineCore"],
+            [configuration: "api", dependency: "$kotlinCoroutineAndroid"]
+    ]
+
+    lifeCycleDependencies = [
+            [configuration: "implementation", dependency: "$lifeCycleExt"],
+            [configuration: "kapt", dependency: "$lifeCycleCompiler"],
+            [configuration: "implementation", dependency: "$lifeCycleViewModelKtx"]
+    ]
+
+    diDependencies = [
+            [configuration: "implementation", dependency: "$koinCore"],
+            [configuration: "implementation", dependency: "$koinAndroid"],
+            [configuration: "implementation", dependency: "$koinViewModel"],
+            [configuration: "implementation", dependency: "$koinAndroidArchiteture"],
+            [configuration: "testImplementation", dependency: "$koinTest"]
+    ]
+
+    glideDependencies = [
+            [configuration: "implementation", dependency: "$glide"],
+            [configuration: "implementation", dependency: "$glideOkHttpIntegration"],
+            [configuration: "kapt", dependency: "$glideCompiler"],
+    ]
+
+    apiDependencies = [
+            [configuration: "implementation", dependency: retrofit],
+            [configuration: "implementation", dependency: retrofitConverterGson],
+            [configuration: "implementation", dependency: retrofitCoroutinesAdapter],
+            [configuration: "implementation", dependency: okHttpLogginInterceptor],
+            [configuration: "api", dependency: okHttp]
+    ]
+
+    dbDependencies = [
+            [configuration: "implementation", dependency: roomRuntime],
+            [configuration: "implementation", dependency: roomKtx],
+            [configuration: "testImplementation", dependency: roomTesting],
+            [configuration: "kapt", dependency: roomCompiler]
+    ]
+
+    prefsEncryptDependecies = [
+            [configuration: "implementation", dependency: sharedPrefsEncrypt],
+    ]
+
+    presentationDependencies = diDependencies + commomDependencies + lifeCycleDependencies
+
+    baseFeatureDependencies = diDependencies + commomDependencies + glideDependencies
+
+    featureDependencies = diDependencies + commomDependencies + lifeCycleDependencies
+
+    dataRemoteDependencies = apiDependencies
+
+    dataLocalDependencies = commomDependencies + prefsEncryptDependecies + dbDependencies
+
+}
