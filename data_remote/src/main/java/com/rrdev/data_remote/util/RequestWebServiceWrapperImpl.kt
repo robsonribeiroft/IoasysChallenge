@@ -1,7 +1,6 @@
 package com.rrdev.data_remote.util
 
 import android.content.res.Resources
-import android.util.Log
 import com.rrdev.data.datasource.local.SessionLocalDataSource
 import com.rrdev.data_remote.R
 import retrofit2.Call
@@ -17,7 +16,7 @@ class RequestWebServiceWrapperImpl(
             val response: Response<B> = request().execute()
             if (response.isSuccessful)
                 return response.body()!!
-            throw Exception("Error: ${response.code()}\n${response.message()}")
+            throw Exception("Error (${response.code()})\n${response.message()}")
 
         }catch (e: Exception){
             throw Exception(resources.getString(R.string.generic_error, e.message))
@@ -35,7 +34,7 @@ class RequestWebServiceWrapperImpl(
 
                 return response.body()!!
             }
-            throw Exception("Error: ${response.code()}\n${response.message()}")
+            throw Exception("Error (${response.code()})\n${response.message()}")
 
         }catch (e: Exception){
             throw Exception(resources.getString(R.string.generic_error, e.message))

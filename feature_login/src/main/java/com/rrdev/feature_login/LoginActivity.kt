@@ -1,9 +1,11 @@
 package com.rrdev.feature_login
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleOwner
+import com.rrdev.base_feature.extensions.loadDialogDismiss
+import com.rrdev.base_feature.extensions.loadDialogShow
+import com.rrdev.base_feature.extensions.setVisible
 import com.rrdev.base_feature.navigationIntent
 import com.rrdev.base_presentation.onPostValue
 import com.rrdev.feature_login.navigation.LoginNavigation
@@ -37,14 +39,16 @@ class LoginActivity : AppCompatActivity(), LifecycleOwner, KoinComponent {
     private fun addObservers(){
         viewModel.logInViewState.onPostValue(this,
             onSuccess = {
-                Log.d("loginViewState", "DEU CERTO !!!!")
+                loadDialogDismiss()
                 navigation.navigateToEnterprises()
             },
             onError = {
-                Log.d("loginViewState", "error: ${it.message}")
+                loadDialogDismiss()
+                text_message.text = it.message
+                text_message.setVisible()
             },
             onLoading = {
-                Log.d("loginViewState", "load...")
+                loadDialogShow()
             }
         )
     }

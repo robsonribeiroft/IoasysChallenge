@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.snackbar.Snackbar
 import com.rrdev.base_feature.R
+import com.rrdev.base_feature.core.LoadFullScreenDialog
 
 fun AppCompatActivity.setToolbar(
     toolbar: Toolbar,
@@ -26,4 +27,14 @@ fun AppCompatActivity.showSnack(view: View, message: String, action: () -> Unit 
         .setAction(getString(R.string.try_again)) { action() }
     (snackbar.view.findViewById(com.google.android.material.R.id.snackbar_text) as TextView).maxLines = 10
     snackbar.show()
+}
+
+
+fun AppCompatActivity.loadDialogShow(){
+    LoadFullScreenDialog().show(supportFragmentManager, LoadFullScreenDialog.DIALOG_TAG)
+}
+
+fun AppCompatActivity.loadDialogDismiss(){
+    val dialog = supportFragmentManager.findFragmentByTag(LoadFullScreenDialog.DIALOG_TAG)
+    dialog?.let { (it as LoadFullScreenDialog).dismiss() }
 }

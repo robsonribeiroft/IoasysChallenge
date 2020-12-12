@@ -7,6 +7,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+import java.util.concurrent.TimeUnit
 
 object ServiceWebFactory {
 
@@ -33,5 +34,8 @@ object ServiceWebFactory {
     ): OkHttpClient = OkHttpClient.Builder()
         .dispatcher(dispatcher())
         .addInterceptor(AuthenticatorInterceptor(sessionLocalDataSource))
+        .connectTimeout(TIMEOUT_DURATION_SECONDS, TimeUnit.SECONDS)
+        .readTimeout(TIMEOUT_DURATION_SECONDS, TimeUnit.SECONDS)
+        .writeTimeout(TIMEOUT_DURATION_SECONDS, TimeUnit.SECONDS)
         .build()
 }
