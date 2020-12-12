@@ -27,19 +27,13 @@ class EnterprisesViewModel(
         getAllEnterprises(
             onSuccess = { dataEnterprises ->
                 when {
-                    dataEnterprises.isSuccessFul() -> {
-                        _allEnterprisesViewState.postSuccess(
-                            dataEnterprises.data.map(EnterpriseMapper::toPresentation)
-                        )
-                    }
-                    else -> {
-                        _allEnterprisesViewState.postError(dataEnterprises.exception!!)
-                    }
+                    dataEnterprises.isSuccessFul() -> _allEnterprisesViewState.postSuccess(
+                        dataEnterprises.data.map(EnterpriseMapper::toPresentation)
+                    )
+                    else -> _allEnterprisesViewState.postError(dataEnterprises.exception!!)
                 }
             },
-            onError = {
-                _allEnterprisesViewState.postError(it)
-            }
+            onError = _allEnterprisesViewState::postError
         )
     }
 

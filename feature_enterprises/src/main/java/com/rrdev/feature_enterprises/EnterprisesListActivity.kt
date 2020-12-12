@@ -78,8 +78,8 @@ class EnterprisesListActivity : AppCompatActivity(), LifecycleOwner, SearchView.
         }
     }
 
-    private fun addObservers() {
-        viewModel.allEnterprisesViewState.onPostValue(this,
+    private fun addObservers() = viewModel.run {
+        allEnterprisesViewState.onPostValue(this@EnterprisesListActivity,
             onSuccess = {
                 adapter.enterpriseList = it
                 if (it.isEmpty()){
@@ -89,16 +89,18 @@ class EnterprisesListActivity : AppCompatActivity(), LifecycleOwner, SearchView.
                     binding.recyclerView.setVisible()
                     binding.textMessage.setGone()
                 }
+                loadDialogDismiss()
             },
             onError = {
+                loadDialogDismiss()
                 showSnack(binding.parentList, it.message!!)
             },
             onLoading = {
-                Log.d("loginViewState", "load...")
+                loadDialogShow()
             }
         )
 
-        viewModel.byNameEnterprisesViewState.onPostValue(this,
+        byNameEnterprisesViewState.onPostValue(this@EnterprisesListActivity,
             onSuccess = {
                 adapter.enterpriseList = it
                 if (it.isEmpty()){
@@ -112,9 +114,7 @@ class EnterprisesListActivity : AppCompatActivity(), LifecycleOwner, SearchView.
             onError = {
                 showSnack(binding.parentList, it.message!!)
             },
-            onLoading = {
-                Log.d("loginViewState", "load...")
-            }
+            onLoading = {}
         )
     }
 
