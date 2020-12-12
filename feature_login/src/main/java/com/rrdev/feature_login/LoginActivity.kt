@@ -1,16 +1,15 @@
 package com.rrdev.feature_login
 
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleOwner
-import com.rrdev.base_feature.extensions.loadDialogDismiss
-import com.rrdev.base_feature.extensions.loadDialogShow
-import com.rrdev.base_feature.extensions.setVisible
+import com.rrdev.base_feature.extensions.*
 import com.rrdev.base_feature.navigationIntent
 import com.rrdev.base_presentation.onPostValue
+import com.rrdev.feature_login.databinding.ActivityLoginBinding
 import com.rrdev.feature_login.navigation.LoginNavigation
 import com.rrdev.presentation_login.LogInViewModel
-import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.KoinComponent
 
@@ -18,20 +17,29 @@ class LoginActivity : AppCompatActivity(), LifecycleOwner, KoinComponent {
 
     private val viewModel: LogInViewModel by viewModel()
     private val navigation: LoginNavigation by navigationIntent()
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupView()
         addObservers()
     }
 
-    private fun setupView(){
-        button_confirm.setOnClickListener {
+    private fun setupView() = binding.run {
+        buttonConfirm.setOnClickListener {
             viewModel.authUser(
-                edit_text_email.text.toString(),
-                edit_text_password.text.toString()
+                editTextEmail.asString(),
+                editTextPassword.asString()
+            )
+        }
+
+        editTextPassword.handleImeOption(EditorInfo.IME_ACTION_DONE) {
+            viewModel.authUser(
+                editTextEmail.asString(),
+                editTextPassword.asString()
             )
         }
     }
@@ -44,8 +52,8 @@ class LoginActivity : AppCompatActivity(), LifecycleOwner, KoinComponent {
             },
             onError = {
                 loadDialogDismiss()
-                text_message.text = it.message
-                text_message.setVisible()
+                binding.textMessage.text = it.message
+                binding.textMessage.setVisible()
             },
             onLoading = {
                 loadDialogShow()

@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.google.android.material.textfield.TextInputEditText
 import com.rrdev.base_feature.R
 
 fun View.setVisible(){
@@ -16,6 +17,17 @@ fun View.setInVisible(){
 
 fun View.setGone(){
     visibility = View.GONE
+}
+
+fun TextInputEditText.asString(): String = text.toString()
+
+fun TextInputEditText.handleImeOption(imeAction: Int, handler: () -> Unit) {
+    this.setOnEditorActionListener { _, actionId, _ ->
+        if (actionId == imeAction){
+            handler()
+        }
+        return@setOnEditorActionListener false
+    }
 }
 
 fun ImageView.loadImageUrl(
