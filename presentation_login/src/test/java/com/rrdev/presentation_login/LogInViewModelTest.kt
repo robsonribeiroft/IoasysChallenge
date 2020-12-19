@@ -64,4 +64,4 @@ class LogInViewModelTest {
         viewModel.authUser(email = "", password = "")
         assertTrue(viewModel.logInViewState.isError())
     }
-}q
+}
