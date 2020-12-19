@@ -44,14 +44,14 @@ ext{
             [configuration: "implementation", dependency: sharedPrefsEncrypt],
     ]
 
-    presentationDependencies = diDependencies + commomDependencies + lifeCycleDependencies
+    presentationDependencies = diDependencies + commomDependencies + lifeCycleDependencies + testPresentationDependencies + [ ]
 
-    baseFeatureDependencies = diDependencies + commomDependencies + glideDependencies
+    baseFeatureDependencies = diDependencies + commomDependencies + glideDependencies + [ ]
 
-    featureDependencies = diDependencies + commomDependencies + lifeCycleDependencies
+    featureDependencies = diDependencies + commomDependencies + lifeCycleDependencies + [ ]
 
-    dataRemoteDependencies = apiDependencies
+    dataRemoteDependencies = apiDependencies + [ ]
 
-    dataLocalDependencies = commomDependencies + prefsEncryptDependecies + dbDependencies
+    dataLocalDependencies = commomDependencies + prefsEncryptDependecies + dbDependencies + [ ]
 
 }

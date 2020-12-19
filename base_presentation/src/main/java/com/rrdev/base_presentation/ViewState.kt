@@ -18,9 +18,7 @@ class ViewState<T>(
         loading: () -> Unit
     ) {
         when (status) {
-            is ViewStateStatus.Success<*> -> {
-                status.data?.let { onSuccess(it as T) } ?: throw RuntimeException()
-            }
+            is ViewStateStatus.Success<*> -> status.data?.let { onSuccess(it as T) } ?: throw RuntimeException()
             is ViewStateStatus.Error -> status.error?.let { onError(it) } ?: throw RuntimeException()
             is ViewStateStatus.Loading -> loading()
             else -> Unit
@@ -28,6 +26,6 @@ class ViewState<T>(
     }
 }
 
-fun <T> ViewState<T>?.isSuccess() = this?.status?.equals(ViewStateStatus.Success) ?: false
-fun <T> ViewState<T>?.isError() = this?.status?.equals(ViewStateStatus.Error) ?: false
-fun <T> ViewState<T>?.isLoading() = this?.status?.equals(ViewStateStatus.Loading) ?: false
+fun <T> ViewState<T>?.isSuccess() = this?.status?.let { it is ViewStateStatus.Success<*> } ?: false
+fun <T> ViewState<T>?.isError() = this?.status?.let { it is ViewStateStatus.Error } ?: false
+fun <T> ViewState<T>?.isLoading() = this?.status?.let { it is ViewStateStatus.Loading } ?: false

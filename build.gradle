@@ -1,4 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: 'testLibs.gradle'
+apply from: 'testDependencies.gradle'
 apply from: 'libs.gradle'
 apply from: 'dependencies.gradle'
 
